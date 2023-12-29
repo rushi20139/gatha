@@ -10,7 +10,7 @@ sht1 = gc.open_by_key('1WoKtTVgOY9EIQjvhG-H4KsyRxN01nh234-FRAeb8_Ks')
 worksheet = sht1.get_worksheet(0)
 
 SHEET_ID = '1WoKtTVgOY9EIQjvhG-H4KsyRxN01nh234-FRAeb8_Ks'
-SHEET_NAME = 'GATHAS'
+SHEET_NAME = 'VANDETU'
 url = f'https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/tq?tqx=out:csv&sheet={SHEET_NAME}'
 df = pd.read_csv(url)
 row_index_global = None 
@@ -128,10 +128,10 @@ class MyApp:
             mouse_listener.stop()
             row_index_local = df[df['Done or not'].isna()].index[0]
             cell_address = f'B{row_index_local + 2}'
-            # print(row_index_local)
+            print(row_index_local)
             # df.at[row_index_local, 'Done or not'] = 'Done'
-            # print(df.at[row_index_local, 'Done or not'])
             worksheet.update_acell(cell_address, 'Done')
+            print(df.at[row_index_local, 'Done or not'])
 
 
 if __name__ == "__main__":
