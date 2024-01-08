@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['venv\\app.py'],
+    ['app.py'],
     pathex=[],
     binaries=[],
     datas=[],

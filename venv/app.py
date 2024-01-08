@@ -4,10 +4,10 @@ import pandas as pd
 import pynput, gspread
 from oauth2client.service_account import ServiceAccountCredentials
 scope = ['https://www.googleapis.com/auth/spreadsheets']
-credentials = ServiceAccountCredentials.from_json_keyfile_name('venv/gcred.json', scope)
+credentials = ServiceAccountCredentials.from_json_keyfile_name('D:/Gatha/venv/gcred.json', scope)
 gc = gspread.authorize(credentials)
 sht1 = gc.open_by_key('1WoKtTVgOY9EIQjvhG-H4KsyRxN01nh234-FRAeb8_Ks')
-worksheet = sht1.get_worksheet(0)
+worksheet = sht1.get_worksheet(1)
 
 SHEET_ID = '1WoKtTVgOY9EIQjvhG-H4KsyRxN01nh234-FRAeb8_Ks'
 SHEET_NAME = 'VANDETU'
@@ -38,14 +38,14 @@ class MyApp:
         self.create_widgets()
 
     def create_widgets(self):
-        self.image = tk.PhotoImage(file="logo2.png")
+        self.image = tk.PhotoImage(file="D:/Gatha/logo2.png")
         self.original_image = self.image.subsample(3,3)
         tk.Label(image=self.original_image, bg="darkblue").place(x=self.root.winfo_screenwidth() - 120, y=4)  # Adjust x and y as needed
         # self.text_widget = tk.Text(self.root, wrap="word", height=100, width=150, bg="darkblue", fg="white")
         # self.text_widget.pack(pady=200)
 
         # Define a custom font
-        custom_font = ("Helvetica", 40, "bold italic")
+        custom_font = ("Helvetica", 30, "bold italic")
 
 
         #Timer Label
@@ -131,7 +131,7 @@ class MyApp:
             print(row_index_local)
             # df.at[row_index_local, 'Done or not'] = 'Done'
             worksheet.update_acell(cell_address, 'Done')
-            print(df.at[row_index_local, 'Done or not'])
+            print(f"{df.at[row_index_local, 'Done or not']} : Like really done or not? ")
 
 
 if __name__ == "__main__":
